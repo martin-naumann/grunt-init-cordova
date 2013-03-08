@@ -14,6 +14,8 @@
     "grunt": "~0.4.0",
     "grunt-shell": "0.1.x",
     "temporary": "0.0.5",
-    "grunt-jasmine-task": "~0.2.3"
+    "grunt-jasmine-task": "~0.2.3",
+    "grunt-phonegap-build": "0.0.1",
+    "grunt-zipstream": "~0.2.0",
   }
 }

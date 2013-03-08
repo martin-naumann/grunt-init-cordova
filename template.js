@@ -33,7 +33,10 @@ exports.template = function(grunt, init, done) {
       { name: "name", message: "Enter a name for the project" },
       { name: "version", message: "Enter the version number of the project", default: "0.0.1" },
       { name: "author_name", message: "Enter the name of the author" },
-      { name: "min_concat", message: "Will files be concatenated or minified?", default: "y" },
+      { name: "min_concat", message: "Will files be concatenated or minified?", default: "y/N" },
+      { name: "phonegap_app_id", message: "Enter the App ID for build.phonegap.com" },
+      { name: "phonegap_user_email", message: "Enter your build.phonegap.com email address" },
+      { name: "phonegap_user_password", message: "Enter your build.phonegap.com password" }
     ], function(err, props) {
       props.dom = true;
       console.log(props.min_concat);

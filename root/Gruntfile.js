@@ -56,6 +56,23 @@ module.exports = function(grunt) {
         command: 'cordova build blackberry && cordova emulate blackberry'
       }
     },
+    
+    zip: {
+      appPackage: {
+        src: ['www/**/*'],
+        dest: 'app.zip'
+      }
+    },
+    'phonegap-build': {
+      options: {
+        archive: 'app.zip',
+        'appId': '{%= phonegap_app_id %}',
+        'user': {
+          'email': '{%= phonegap_user_email %}',
+          'password': '{%= phonegap_user_password %}'
+        }
+      }
+    }
     jshint: {
       options: {
         curly: true,
@@ -80,6 +97,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-jasmine-task');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTask('grunt-zipstream');
+  grunt.loadNpmTask('grunt-phonegap-build');
 
   // Default task
   grunt.registerTask('default', 'lint {%= test_task %}{%= min_concat ? " concat min" : "" %}');
@@ -89,5 +108,6 @@ module.exports = function(grunt) {
   grunt.registerTask('debug:ios', 'lint {%= test_task %}{%= min_concat ? " concat min" : "" %} shell:debug_ios');
   grunt.registerTask('debug:android', 'lint {%= test_task %}{%= min_concat ? " concat min" : "" %} shell:debug_android');
   grunt.registerTask('debug:blackberry', 'lint {%= test_task %}{%= min_concat ? " concat min" : "" %} shell:debug_blackberry');
+  grunt.registerTask('build', 'lint zip phonegap-build');
 
 };
